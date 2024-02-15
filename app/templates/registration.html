@@ -5,11 +5,10 @@
 
 {% block bodyblock %}
 <div class="container">
+    <div class="col-4 offset-4">
+        <h1>Registration Form</h1>
 
-    <div class="col-4 offset-4 mb-10">
-        <h1>Login Form</h1>
-
-        <form id="login-form">
+        <form id="registration-form">
             {{ form.hidden_tag() }}
             <div class="form-group">
                 <label for="username">Email address:</label>
@@ -21,23 +20,31 @@
                 {{ form.password(class="form-control", size=20) }}
             </div>
 
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password:</label>
+                {{ form.confirm_password(class="form-control", size=20) }}
+            </div>
             <br>
             <div class="form-group">
-                {{ form.submit(class="btn btn-primary", id="btn_login") }}
+                {{ form.submit(class="btn btn-primary", id="btn_register") }}
             </div>
-
             <div class="form-group">
-                <a href="{{url_for('register')}}">If you not a member, register yourself.</a>
+                <a href="{{url_for('login')}}">If you are already a member, Login</a>
             </div>
         </form>
     </div>
 </div>
+<script src="{{url_for('static', filename='js/register.js')}}"></script>
 {% endblock %}
 
 {% block footerblock %}
 {% include 'footer.html' %}
 <script src="{{url_for('static', filename='js/register.js')}}"></script>
+<script>
+
+    var xa = new crudOperation();
+    xa.init();
+
+</script>
 
 {% endblock %}
-
-
