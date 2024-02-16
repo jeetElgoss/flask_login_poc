@@ -1,11 +1,9 @@
 from flask import render_template, redirect, url_for, request, jsonify
 from flask_login import login_user, logout_user, login_required
-from werkzeug.security import check_password_hash
-
 from app import app, login_manager
 from app.models import User
 from app.forms import LoginForm, RegistrationForm
-from .services.register_service import UserAccount
+from .services.user_account_service import UserAccount
 
 
 @login_manager.user_loader
@@ -15,32 +13,30 @@ def load_user(user_id):
 
 @app.route('/register', methods=['POST', "GET"])
 def register():
-    new_form = RegistrationForm()
+    form_data = RegistrationForm()
     if request.method == "POST":
-        if new_form.validate_on_submit():
-            result = UserAccount.register(UserAccount, new_form)
+        if form_data.validate_on_submit():
+            result = UserAccount.register(UserAccount, form_data)
             return jsonify({"data": result})
     else:
-        return render_template("registration.html", form=new_form)
+        return render_template("registration.html", form=form_data)
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    credentials = LoginForm()
+    form_data = LoginForm()
     if request.method == "POST":
-        if credentials.validate_on_submit():
-            result = UserAccount.login(UserAccount, credentials)
-            print(result)
-            exit()
+        if form_data.validate_on_submit():
+            result = UserAccount.login(UserAccount, form_data)
             if result:
                 login_user(result)
-                return jsonify({"data": "You are logged in!"})
+                return jsonify({"data": "You are logged in!", "redirect_url": "/"})
     else:
-        return render_template('login.html', form=credentials, error='Invalid username or password')
+        return render_template('login.html', form=form_data)
 
 
 @app.route("/")
-# @login_required
+@login_required
 def index():
     return render_template("index.html")
 

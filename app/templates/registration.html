@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block navblock %}
-    {% include 'navbar.html' %}
+    {% include 'user_nav.html' %}
 {% endblock %}
 
 {% block bodyblock %}
 <div class="container">
     <div class="col-4 offset-4">
-        <h1>Registration Form</h1>
+        <h2>Registration Form</h2>
 
         <form id="registration-form">
             {{ form.hidden_tag() }}
@@ -34,12 +34,11 @@
         </form>
     </div>
 </div>
-<script src="{{url_for('static', filename='js/register.js')}}"></script>
 {% endblock %}
 
 {% block footerblock %}
 {% include 'footer.html' %}
-<script src="{{url_for('static', filename='js/register.js')}}"></script>
+<script src="{{url_for('static', filename='js/user_account.js')}}"></script>
 <script>
 
     var xa = new crudOperation();

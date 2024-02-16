@@ -1,3 +1,14 @@
 {% extends 'base.html' %}
-{% include 'navbar.html' %}
-{% include 'footer.html' %}
+{% block navblock %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block bodyblock %}
+<div class="container">
+    <h1>Welcome to Dashboard</h1>
+</div>
+{% endblock %}
+
+{% block footerblock %}
+    {% include 'footer.html' %}
+{% endblock %}

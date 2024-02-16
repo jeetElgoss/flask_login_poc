@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% block navblock %}
-    {% include 'navbar.html' %}
+    {% include 'user_nav.html' %}
 {% endblock %}
 
 {% block bodyblock %}
 <div class="container">
 
     <div class="col-4 offset-4 mb-10">
-        <h1>Login Form</h1>
+        <h2>Login Form</h2>
 
         <form id="login-form">
             {{ form.hidden_tag() }}
             <div class="form-group">
-                <label for="username">Email address:</label>
+                <label>Email address:</label>
                 <div> {{ form.username(class="form-control", size="20") }}</div>
             </div>
 
             <div class="form-group">
-                <label for="password">Password:</label>
+                <label>Password:</label>
                 {{ form.password(class="form-control", size=20) }}
             </div>
 
@@ -36,7 +36,13 @@
 
 {% block footerblock %}
 {% include 'footer.html' %}
-<script src="{{url_for('static', filename='js/register.js')}}"></script>
+<script src="{{url_for('static', filename='js/user_account.js')}}"></script>
+<script>
+
+    var xa = new crudOperation();
+    xa.init();
+
+</script>
 
 {% endblock %}
 
