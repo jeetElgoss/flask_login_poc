@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, request, jsonify
 from flask_login import login_user, logout_user, login_required
 from app import app, login_manager
-from app.models import User
+from models.account_model import User
 from app.forms import LoginForm, RegistrationForm
 from .services.user_account_service import UserAccount
 

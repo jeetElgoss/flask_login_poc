@@ -1,6 +1,6 @@
-# models.py
+# account_model.py
 
-from app import db
+from . import db
 from flask_login import UserMixin
 
 

@@ -1,8 +1,6 @@
-from app import db
-# from werkzeug.security import generate_password_hash, check_password_hash
 from passlib.hash import sha256_crypt
-from app.models import User
-
+from models.account_model import User
+from . import db
 
 class UserAccount:
     @staticmethod

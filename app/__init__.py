@@ -18,5 +18,5 @@ login_manager.login_view = 'login'
 csrf = CSRFProtect(app)
 migrate = Migrate(app, db)
 
-# from app import routes, models
-from app import models
+from app import routes
+from models import account_model, register_model

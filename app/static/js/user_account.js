@@ -3,7 +3,6 @@ var crudOperation = function () {
     var self = this;
     //Mandatory function to be implemented here
     var initialization = function () {
-
     }
     var registration = function () {
         $(document).on("click", "#btn_register", register);
@@ -43,7 +42,8 @@ var login = function(e) {
                 data: $('#login-form').serialize(),
                 success: function(response) {
                     $(".toast-body").html(response.data);
-//                    alert(response.data);
+                    $(".toast").toast('show');
+                    alert(response.data);
                     window.location.href = response.redirect_url;
                 },
                 error: function(response) {
@@ -54,11 +54,6 @@ var login = function(e) {
                 }
             });
         }
-
-function toast1(){
-    $('.toast-body').html("Hello test toast");
-        $(".toast").toast('show');
-    }
 
 self.init = function () {
         initialization();
