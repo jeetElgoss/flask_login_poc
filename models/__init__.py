@@ -1,4 +1,4 @@
-from app import db
+from package import db
 from . import account_model
 from . import register_model
 
